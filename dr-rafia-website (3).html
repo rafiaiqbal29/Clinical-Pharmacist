@@ -1,0 +1,742 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dr. Rafia Iqbal — Clinical Pharmacist</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,700;1,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+/* ── RESET & TOKENS ── */
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --green:#0d5c4e;--green-mid:#0f7a68;--green-light:#e8f4f1;
+  --gold:#b8912a;--gold-light:#f5e6c0;
+  --ink:#0d1f1a;--body:#3a4a46;--muted:#6e8880;
+  --bg:#f9faf8;--white:#ffffff;
+  --border:rgba(13,92,78,.12);
+}
+html{scroll-behavior:smooth;}
+body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--body);overflow-x:hidden;cursor:default;}
+
+/* ── LOADER ── */
+#ld{position:fixed;inset:0;background:var(--ink);z-index:9999;display:flex;align-items:center;justify-content:center;transition:opacity .6s,visibility .6s;}
+#ld.out{opacity:0;visibility:hidden;}
+.ld-text{font-family:'Playfair Display',serif;font-size:1.8rem;color:#fff;font-style:italic;text-align:center;}
+.ld-line{width:160px;height:1px;background:rgba(255,255,255,.15);margin:1.2rem auto 0;overflow:hidden;}
+.ld-line span{display:block;height:100%;background:linear-gradient(90deg,var(--green-mid),var(--gold));animation:ldAnim 1.6s ease forwards;}
+@keyframes ldAnim{from{width:0}to{width:100%}}
+
+/* ── NAV ── */
+header{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(249,250,248,.96);backdrop-filter:blur(16px);border-bottom:1px solid var(--border);}
+.nav-inner{max-width:1140px;margin:0 auto;padding:0 2rem;height:68px;display:flex;align-items:center;justify-content:space-between;}
+.logo{font-family:'Playfair Display',serif;font-size:1.15rem;color:var(--green);font-style:italic;text-decoration:none;letter-spacing:.01em;}
+.logo strong{font-style:normal;color:var(--gold);}
+nav{display:flex;align-items:center;gap:2.2rem;}
+nav a{text-decoration:none;font-size:.82rem;font-weight:500;color:var(--muted);letter-spacing:.06em;text-transform:uppercase;transition:color .25s;position:relative;}
+nav a::after{content:'';position:absolute;bottom:-3px;left:0;width:0;height:1px;background:var(--gold);transition:width .3s;}
+nav a:hover{color:var(--green);}
+nav a:hover::after{width:100%;}
+.nav-cta{background:var(--green);color:#fff!important;padding:.5rem 1.3rem;border-radius:4px;font-size:.8rem!important;transition:background .25s,transform .2s!important;}
+.nav-cta::after{display:none!important;}
+.nav-cta:hover{background:var(--green-mid)!important;transform:translateY(-1px);}
+
+/* ── HERO ── */
+.hero{min-height:100vh;display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:4rem;max-width:1140px;margin:0 auto;padding:6rem 2rem 4rem;}
+.hero-left{}
+.tag{display:inline-flex;align-items:center;gap:.5rem;background:var(--green-light);color:var(--green);padding:.35rem .9rem;border-radius:2px;font-size:.72rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;margin-bottom:1.6rem;}
+.tag::before{content:'';width:6px;height:6px;background:var(--gold);border-radius:50%;}
+.hero h1{font-family:'Playfair Display',serif;font-size:clamp(2.6rem,4.5vw,3.8rem);line-height:1.1;color:var(--ink);margin-bottom:.5rem;}
+.hero h1 i{font-style:italic;color:var(--green);}
+.hero-sub{font-family:'Playfair Display',serif;font-size:1rem;color:var(--gold);font-style:italic;margin-bottom:1.6rem;}
+.hero p{font-size:.97rem;line-height:1.85;color:var(--muted);max-width:460px;margin-bottom:2.2rem;}
+.hero-btn{display:inline-flex;align-items:center;gap:.5rem;background:var(--green);color:#fff;padding:.85rem 2rem;border-radius:4px;font-size:.88rem;font-weight:600;text-decoration:none;transition:all .3s;box-shadow:0 6px 20px rgba(13,92,78,.25);}
+.hero-btn:hover{background:var(--green-mid);transform:translateY(-2px);box-shadow:0 10px 30px rgba(13,92,78,.35);}
+
+/* Hero card */
+.hero-right{position:relative;}
+.hcard{background:var(--white);border-radius:8px;padding:2.2rem;box-shadow:0 24px 80px rgba(13,92,78,.1);border:1px solid var(--border);animation:hFloat 6s ease-in-out infinite;}
+@keyframes hFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+.hcard-av{width:72px;height:72px;background:linear-gradient(135deg,var(--green),var(--green-mid));border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:2rem;margin-bottom:1.2rem;}
+.hcard h3{font-family:'Playfair Display',serif;font-size:1.3rem;color:var(--ink);margin-bottom:.15rem;}
+.hcard .hcsub{color:var(--muted);font-size:.83rem;margin-bottom:1.2rem;}
+.hcard-stats{display:grid;grid-template-columns:repeat(3,1fr);text-align:center;padding:.9rem 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border);margin-bottom:1.2rem;}
+.hs-n{font-family:'Playfair Display',serif;font-size:1.4rem;color:var(--green);font-weight:700;display:block;}
+.hs-l{font-size:.67rem;color:var(--muted);text-transform:uppercase;letter-spacing:.07em;}
+.badge-avail{display:inline-flex;align-items:center;gap:.4rem;background:#e6f7ed;color:#0a7a4b;padding:.35rem .9rem;border-radius:2px;font-size:.78rem;font-weight:600;}
+.badge-avail::before{content:'';width:7px;height:7px;background:#0a7a4b;border-radius:50%;animation:pulse 1.8s infinite;}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
+
+/* ── DIVIDER ── */
+.divider{max-width:1140px;margin:0 auto;padding:0 2rem;}
+.divider hr{border:none;border-top:1px solid var(--border);}
+
+/* ── SECTION BASE ── */
+.section{max-width:1140px;margin:0 auto;padding:5rem 2rem;}
+.sh{text-align:center;margin-bottom:3.5rem;}
+.sh .tag{margin-bottom:1rem;}
+.sh h2{font-family:'Playfair Display',serif;font-size:clamp(1.9rem,3vw,2.6rem);color:var(--ink);line-height:1.2;margin-bottom:.9rem;}
+.sh p{color:var(--muted);max-width:500px;margin:0 auto;line-height:1.8;font-size:.95rem;}
+
+/* ── SERVICES ── */
+.svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem;}
+.svc{background:var(--white);border:1px solid var(--border);border-radius:6px;padding:1.8rem;transition:all .35s;position:relative;overflow:hidden;}
+.svc::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;background:linear-gradient(180deg,var(--green),var(--green-mid));transform:scaleY(0);transition:transform .35s;transform-origin:bottom;}
+.svc:hover::before{transform:scaleY(1);}
+.svc:hover{transform:translateY(-4px);box-shadow:0 16px 50px rgba(13,92,78,.1);border-color:rgba(13,92,78,.2);}
+.svc-ico{font-size:1.7rem;margin-bottom:1rem;display:block;}
+.svc h3{font-family:'Playfair Display',serif;font-size:1.05rem;color:var(--ink);margin-bottom:.5rem;}
+.svc p{font-size:.85rem;color:var(--muted);line-height:1.7;}
+
+/* ── ABOUT STRIP ── */
+.about-bg{background:var(--ink);}
+.about-inner{max-width:1140px;margin:0 auto;padding:5rem 2rem;display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center;}
+.about-left .tag{background:rgba(184,145,42,.15);color:var(--gold);}
+.about-left h2{font-family:'Playfair Display',serif;font-size:2.4rem;color:#fff;line-height:1.25;margin-bottom:1.2rem;}
+.about-left p{color:rgba(255,255,255,.55);line-height:1.85;margin-bottom:1.8rem;font-size:.95rem;}
+.feat-list{display:flex;flex-direction:column;gap:.8rem;}
+.feat{display:flex;align-items:flex-start;gap:.9rem;padding:1rem;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);border-radius:6px;transition:all .3s;}
+.feat:hover{background:rgba(184,145,42,.08);border-color:rgba(184,145,42,.25);transform:translateX(6px);}
+.feat-ico{width:36px;height:36px;background:linear-gradient(135deg,var(--gold),#e8c870);border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:.95rem;flex-shrink:0;}
+.feat h4{color:#fff;font-size:.88rem;margin-bottom:.15rem;}
+.feat p{color:rgba(255,255,255,.42);font-size:.78rem;margin:0;line-height:1.5;}
+.stat-tiles{display:grid;grid-template-columns:1fr 1fr;gap:1rem;}
+.stile{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);border-radius:8px;padding:1.8rem;text-align:center;transition:all .3s;}
+.stile:hover{background:rgba(184,145,42,.1);border-color:rgba(184,145,42,.3);transform:scale(1.02);}
+.stile:nth-child(2){margin-top:1.5rem;}
+.stile:nth-child(3){margin-top:-1.5rem;}
+.stile-ico{font-size:1.8rem;margin-bottom:.5rem;}
+.stile-val{font-family:'Playfair Display',serif;font-size:1.9rem;color:var(--gold);font-weight:700;display:block;}
+.stile-lbl{color:rgba(255,255,255,.4);font-size:.7rem;text-transform:uppercase;letter-spacing:.09em;}
+
+/* ── BOOKING + PAYMENT (one clean section) ── */
+.book-bg{background:linear-gradient(135deg,var(--green-light),#fff);}
+.book-inner{max-width:1000px;margin:0 auto;padding:5rem 2rem;}
+.book-grid{display:grid;grid-template-columns:2fr 3fr;background:var(--white);border-radius:8px;box-shadow:0 30px 90px rgba(13,92,78,.1);overflow:hidden;border:1px solid var(--border);}
+
+/* Left panel */
+.book-left{background:linear-gradient(165deg,var(--green),var(--ink));padding:2.8rem 2.2rem;color:#fff;}
+.book-left h3{font-family:'Playfair Display',serif;font-size:1.7rem;margin-bottom:.8rem;line-height:1.3;}
+.book-left>p{color:rgba(255,255,255,.6);font-size:.87rem;line-height:1.75;margin-bottom:2rem;}
+.info-row{display:flex;align-items:center;gap:.8rem;margin-bottom:.9rem;font-size:.84rem;color:rgba(255,255,255,.8);}
+.info-ico{width:32px;height:32px;background:rgba(255,255,255,.12);border-radius:5px;display:flex;align-items:center;justify-content:center;font-size:.9rem;flex-shrink:0;}
+.info-row strong{display:block;font-size:.86rem;}
+.info-row span{opacity:.6;font-size:.8rem;}
+.fee-tag{margin-top:2rem;background:var(--gold);color:var(--ink);padding:1rem 1.4rem;border-radius:6px;display:flex;align-items:center;justify-content:space-between;}
+.fee-tag .fl{font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;margin-bottom:.1rem;}
+.fee-tag .fv{font-family:'Playfair Display',serif;font-size:1.6rem;font-weight:700;}
+
+/* Right panel — form */
+.book-right{padding:2.8rem;}
+.book-right h4{font-family:'Playfair Display',serif;font-size:1.3rem;color:var(--ink);margin-bottom:1.8rem;}
+.fg{margin-bottom:1rem;}
+.fg label{display:block;font-size:.72rem;font-weight:600;color:var(--body);margin-bottom:.35rem;text-transform:uppercase;letter-spacing:.07em;}
+.fg input,.fg select,.fg textarea{width:100%;padding:.7rem .95rem;border:1.5px solid rgba(13,92,78,.18);border-radius:4px;font-family:'Inter',sans-serif;font-size:.9rem;color:var(--ink);background:var(--bg);outline:none;transition:border-color .25s,box-shadow .25s;}
+.fg input:focus,.fg select:focus,.fg textarea:focus{border-color:var(--green);box-shadow:0 0 0 3px rgba(13,92,78,.08);}
+.fg textarea{resize:none;height:70px;}
+.fg2{display:grid;grid-template-columns:1fr 1fr;gap:.9rem;}
+
+/* Payment selector */
+.pay-label{font-size:.72rem;font-weight:600;color:var(--body);text-transform:uppercase;letter-spacing:.07em;margin-bottom:.5rem;display:block;margin-top:.3rem;}
+.pay-opts{display:grid;grid-template-columns:repeat(3,1fr);gap:.5rem;margin-bottom:1.2rem;}
+.pay-opt{border:1.5px solid rgba(13,92,78,.15);border-radius:4px;padding:.65rem .4rem;text-align:center;cursor:pointer;transition:all .25s;font-size:.78rem;font-weight:600;color:var(--muted);}
+.pay-opt:hover,.pay-opt.on{border-color:var(--green);background:var(--green-light);color:var(--green);}
+.pay-opt span{display:block;font-size:1.15rem;margin-bottom:.2rem;}
+.pay-note{background:var(--green-light);border:1px solid rgba(13,92,78,.15);border-radius:4px;padding:.85rem 1rem;font-size:.82rem;color:var(--green);line-height:1.6;margin-bottom:1rem;}
+
+#card-el{padding:.7rem .95rem;border:1.5px solid rgba(13,92,78,.18);border-radius:4px;background:var(--bg);min-height:44px;}
+#card-err{color:#c0392b;font-size:.78rem;margin-top:.3rem;}
+
+.pay-btn{width:100%;background:var(--green);color:#fff;padding:.95rem;border:none;border-radius:4px;font-family:'Inter',sans-serif;font-size:.93rem;font-weight:600;cursor:pointer;transition:all .3s;display:flex;align-items:center;justify-content:center;gap:.5rem;box-shadow:0 6px 20px rgba(13,92,78,.25);margin-top:.4rem;}
+.pay-btn:hover{background:var(--green-mid);transform:translateY(-2px);box-shadow:0 10px 30px rgba(13,92,78,.35);}
+.pay-btn:disabled{opacity:.55;cursor:not-allowed;transform:none;box-shadow:none;}
+.trust{display:flex;align-items:center;justify-content:center;gap:1.2rem;margin-top:.9rem;font-size:.72rem;color:var(--muted);flex-wrap:wrap;}
+.trust span{display:flex;align-items:center;gap:.3rem;}
+
+/* ── VIDEO CONSULTATION (locked / unlocked) ── */
+.vc-bg{background:var(--ink);}
+.vc-inner{max-width:1000px;margin:0 auto;padding:5rem 2rem;}
+
+/* LOCKED */
+.vc-locked{}
+.vl-top{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;margin-bottom:3rem;}
+.vl-text .tag{background:rgba(184,145,42,.15);color:var(--gold);}
+.vl-text h2{font-family:'Playfair Display',serif;font-size:2.4rem;color:#fff;line-height:1.25;margin-bottom:1rem;}
+.vl-text p{color:rgba(255,255,255,.5);line-height:1.8;font-size:.93rem;margin-bottom:1.5rem;}
+.lock-card{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);border-radius:8px;padding:2.5rem;text-align:center;}
+.lock-icon{width:80px;height:80px;border-radius:50%;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);display:flex;align-items:center;justify-content:center;font-size:2.2rem;margin:0 auto 1.5rem;}
+.lock-card h4{font-family:'Playfair Display',serif;font-size:1.3rem;color:#fff;margin-bottom:.6rem;}
+.lock-card p{color:rgba(255,255,255,.45);font-size:.85rem;line-height:1.7;margin-bottom:1.5rem;}
+.lock-steps{display:flex;flex-direction:column;gap:.6rem;text-align:left;margin-bottom:1.5rem;}
+.lock-step{display:flex;align-items:center;gap:.8rem;background:rgba(255,255,255,.04);border-radius:5px;padding:.65rem 1rem;}
+.lock-step-n{width:24px;height:24px;background:var(--green);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.72rem;font-weight:700;color:#fff;flex-shrink:0;}
+.lock-step span{color:rgba(255,255,255,.6);font-size:.82rem;}
+.lock-badge{display:inline-flex;align-items:center;gap:.5rem;background:rgba(184,145,42,.12);border:1px solid rgba(184,145,42,.25);color:var(--gold);padding:.5rem 1.1rem;border-radius:2px;font-size:.8rem;font-weight:600;}
+
+/* UNLOCKED */
+.vc-unlocked{display:none;}
+.vc-unlocked.on{display:block;}
+.unlock-strip{background:linear-gradient(135deg,rgba(13,92,78,.5),rgba(13,122,104,.3));border:1px solid rgba(13,150,130,.35);border-radius:6px;padding:1.2rem 1.8rem;display:flex;align-items:center;gap:1.2rem;margin-bottom:2.5rem;}
+.us-ico{width:44px;height:44px;background:linear-gradient(135deg,var(--green),var(--green-mid));border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:1.2rem;flex-shrink:0;}
+.us-text h4{color:#fff;font-size:.95rem;margin-bottom:.15rem;}
+.us-text p{color:rgba(255,255,255,.5);font-size:.82rem;}
+.us-ref{margin-left:auto;background:var(--gold);color:var(--ink);padding:.3rem .9rem;border-radius:2px;font-size:.75rem;font-weight:700;white-space:nowrap;}
+
+.vc-room-grid{display:grid;grid-template-columns:1fr 340px;gap:1.5rem;}
+
+/* Main video */
+.vcr-main-vid{background:#0a1414;border-radius:8px;overflow:hidden;position:relative;}
+.vcr-screen{aspect-ratio:16/9;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;}
+.vcr-screen::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 50% 40%,rgba(13,92,78,.35),transparent 70%);}
+.vcr-av{width:90px;height:90px;border-radius:50%;background:linear-gradient(135deg,var(--green),var(--green-mid));display:flex;align-items:center;justify-content:center;font-size:2.5rem;z-index:1;position:relative;animation:hFloat 4s ease-in-out infinite;}
+.vcr-pip{position:absolute;bottom:12px;right:12px;width:90px;height:68px;background:#1a2e2e;border-radius:6px;border:2px solid var(--green);display:flex;align-items:center;justify-content:center;font-size:1.4rem;}
+.vcr-dname{position:absolute;bottom:12px;left:12px;background:rgba(0,0,0,.55);color:#fff;padding:.25rem .7rem;border-radius:4px;font-size:.72rem;}
+.vcr-status{position:absolute;top:12px;left:12px;display:flex;align-items:center;gap:.4rem;background:rgba(0,0,0,.5);color:#4ade80;padding:.25rem .7rem;border-radius:20px;font-size:.7rem;font-weight:600;}
+.vcr-status::before{content:'';width:6px;height:6px;background:#4ade80;border-radius:50%;animation:pulse 1.5s infinite;}
+.vcr-bar{padding:.9rem 1.2rem;background:rgba(0,0,0,.3);display:flex;align-items:center;justify-content:space-between;}
+.vcr-btns{display:flex;gap:.5rem;}
+.vcr-btn{width:40px;height:40px;border-radius:50%;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:1rem;transition:all .2s;}
+.vcr-btn:hover{transform:scale(1.08);}
+.vcr-btn.grey{background:rgba(255,255,255,.12);}
+.vcr-btn.red{background:#e74c3c;}
+.vcr-dur{color:rgba(255,255,255,.45);font-family:'Playfair Display',serif;font-size:.88rem;}
+
+/* Sidebar */
+.vcr-side{display:flex;flex-direction:column;gap:1rem;}
+.vcr-doc-info{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);border-radius:8px;padding:1.2rem;}
+.vcr-doc-info .di-row{display:flex;align-items:center;gap:.9rem;}
+.di-av{width:44px;height:44px;border-radius:50%;background:linear-gradient(135deg,var(--green),var(--green-mid));display:flex;align-items:center;justify-content:center;font-size:1.2rem;flex-shrink:0;}
+.di-name{color:#fff;font-size:.9rem;font-family:'Playfair Display',serif;}
+.di-role{color:rgba(255,255,255,.4);font-size:.75rem;}
+.di-online{margin-left:auto;background:rgba(74,222,128,.12);color:#4ade80;padding:.25rem .65rem;border-radius:20px;font-size:.68rem;font-weight:600;display:flex;align-items:center;gap:.3rem;}
+.di-online::before{content:'';width:5px;height:5px;background:#4ade80;border-radius:50%;animation:pulse 1.5s infinite;}
+.vcr-chat-box{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);border-radius:8px;flex:1;display:flex;flex-direction:column;overflow:hidden;}
+.chat-hd{padding:.7rem 1rem;border-bottom:1px solid rgba(255,255,255,.06);font-size:.72rem;color:rgba(255,255,255,.35);font-weight:600;text-transform:uppercase;letter-spacing:.08em;}
+.chat-msgs{flex:1;padding:.8rem 1rem;overflow-y:auto;display:flex;flex-direction:column;gap:.5rem;max-height:220px;}
+.cmsg{background:rgba(255,255,255,.05);border-radius:5px;padding:.45rem .7rem;}
+.cmsg .cw{font-size:.66rem;color:var(--green-mid);margin-bottom:.12rem;font-weight:600;}
+.cmsg .ct{font-size:.8rem;color:rgba(255,255,255,.7);line-height:1.45;}
+.cmsg.mine .cw{color:var(--gold);}
+.chat-inp{display:flex;gap:.4rem;padding:.7rem .9rem;border-top:1px solid rgba(255,255,255,.06);}
+.chat-inp input{flex:1;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.08);border-radius:4px;padding:.4rem .7rem;color:#fff;font-size:.8rem;outline:none;font-family:'Inter',sans-serif;}
+.chat-inp input::placeholder{color:rgba(255,255,255,.25);}
+.chat-inp button{background:var(--green);border:none;border-radius:4px;width:32px;height:32px;cursor:pointer;color:#fff;font-size:.9rem;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+
+/* Start overlay */
+.start-overlay{position:absolute;inset:0;background:rgba(10,20,20,.88);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1rem;z-index:10;}
+.start-overlay .so-av{font-size:3rem;animation:hFloat 3s ease-in-out infinite;}
+.start-overlay h4{color:#fff;font-family:'Playfair Display',serif;font-size:1.2rem;}
+.start-overlay p{color:rgba(255,255,255,.45);font-size:.82rem;}
+.start-btn{background:var(--green);color:#fff;padding:.75rem 1.8rem;border:none;border-radius:4px;font-family:'Inter',sans-serif;font-weight:600;font-size:.9rem;cursor:pointer;transition:all .3s;box-shadow:0 6px 20px rgba(13,92,78,.4);}
+.start-btn:hover{background:var(--green-mid);transform:translateY(-2px);}
+
+/* ── SUCCESS MODAL ── */
+.modal-bg{display:none;position:fixed;inset:0;background:rgba(13,31,26,.75);backdrop-filter:blur(10px);z-index:800;align-items:center;justify-content:center;}
+.modal-bg.on{display:flex;animation:fadeIn .3s ease;}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+.modal{background:var(--white);border-radius:8px;padding:2.5rem;width:460px;max-width:94vw;text-align:center;animation:popUp .35s cubic-bezier(.34,1.56,.64,1);}
+@keyframes popUp{from{transform:scale(.9);opacity:0}to{transform:scale(1);opacity:1}}
+.modal-check{width:72px;height:72px;border-radius:50%;background:linear-gradient(135deg,#0a7a4b,#12b87a);display:flex;align-items:center;justify-content:center;font-size:2rem;margin:0 auto 1.4rem;animation:bounceIn .5s .15s ease both;}
+@keyframes bounceIn{0%{transform:scale(0)}65%{transform:scale(1.15)}100%{transform:scale(1)}}
+.modal h3{font-family:'Playfair Display',serif;font-size:1.6rem;color:var(--ink);margin-bottom:.5rem;}
+.modal p{color:var(--muted);line-height:1.75;margin-bottom:1.2rem;font-size:.9rem;}
+.modal-ref{background:var(--green-light);padding:.7rem 1rem;border-radius:4px;font-size:.82rem;color:var(--green);font-weight:600;margin-bottom:1rem;}
+.modal-unlock{background:linear-gradient(135deg,#e8f7f3,#fff);border:2px solid var(--green);border-radius:6px;padding:1.1rem;margin-bottom:1.2rem;display:flex;align-items:center;gap:.9rem;text-align:left;}
+.mu-ico{font-size:1.8rem;flex-shrink:0;}
+.mu-text h4{color:var(--green);font-size:.9rem;margin-bottom:.15rem;}
+.mu-text p{color:var(--muted);font-size:.8rem;line-height:1.5;}
+.wa-btn{display:flex;align-items:center;justify-content:center;gap:.5rem;background:#25d366;color:#fff;padding:.7rem 1.4rem;border-radius:4px;text-decoration:none;font-weight:600;font-size:.85rem;margin-bottom:.8rem;transition:all .3s;}
+.wa-btn:hover{background:#1daa50;transform:translateY(-2px);}
+.modal-close-btn{background:var(--green);color:#fff;padding:.7rem 1.8rem;border:none;border-radius:4px;font-family:'Inter',sans-serif;font-weight:600;cursor:pointer;font-size:.88rem;transition:background .25s;}
+.modal-close-btn:hover{background:var(--green-mid);}
+
+/* ── FOOTER ── */
+.footer-bg{background:var(--ink);border-top:1px solid rgba(255,255,255,.06);}
+.footer-inner{max-width:1140px;margin:0 auto;padding:3rem 2rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;}
+.f-brand{font-family:'Playfair Display',serif;font-size:1.1rem;color:#fff;font-style:italic;}
+.f-brand strong{font-style:normal;color:var(--gold);}
+.f-mid{color:rgba(255,255,255,.4);font-size:.8rem;text-align:center;}
+.f-right{color:rgba(255,255,255,.35);font-size:.78rem;text-align:right;}
+
+/* ── SCROLL REVEAL ── */
+.rv{opacity:0;transform:translateY(28px);transition:opacity .7s ease,transform .7s ease;}
+.rv.in{opacity:1;transform:translateY(0);}
+
+/* ── RESPONSIVE ── */
+@media(max-width:900px){
+  nav a:not(.nav-cta){display:none;}
+  .hero,.about-inner{grid-template-columns:1fr;gap:2rem;padding-top:5.5rem;}
+  .hero-right{display:none;}
+  .section,.book-inner,.vc-inner{padding:3.5rem 1.2rem;}
+  .svc-grid{grid-template-columns:1fr 1fr;}
+  .book-grid{grid-template-columns:1fr;}
+  .vl-top{grid-template-columns:1fr;}
+  .vc-room-grid{grid-template-columns:1fr;}
+  .vcr-side{flex-direction:row;}
+  .fg2{grid-template-columns:1fr;}
+  .footer-inner{flex-direction:column;text-align:center;}
+  .f-right{text-align:center;}
+}
+@media(max-width:500px){.svc-grid{grid-template-columns:1fr;}.pay-opts{grid-template-columns:1fr 1fr;}}
+</style>
+</head>
+<body>
+
+<!-- LOADER -->
+<div id="ld">
+  <div>
+    <div class="ld-text">Dr. Rafia Iqbal</div>
+    <div class="ld-line"><span></span></div>
+  </div>
+</div>
+
+<!-- HEADER -->
+<header>
+  <div class="nav-inner">
+    <a class="logo" href="#">Dr. <strong>Rafia Iqbal</strong></a>
+    <nav>
+      <a href="#services">Services</a>
+      <a href="#about">About</a>
+      <a href="#book">Book</a>
+      <a href="#consultation">Consultation</a>
+      <a href="#book" class="nav-cta">Book Appointment</a>
+    </nav>
+  </div>
+</header>
+
+<!-- ══ HERO ══ -->
+<section style="background:var(--white);">
+  <div class="hero">
+    <div class="hero-left">
+      <div class="tag">Clinical Pharmacist — Pakistan</div>
+      <h1><i>Dr. Rafia</i><br>Iqbal</h1>
+      <p class="hero-sub">PharmD — Clinical Pharmacist &amp; Drug Counselor</p>
+      <p>Expert medication management, personalized drug counseling, and professional pharmaceutical care — delivered through a secure video consultation after booking.</p>
+      <a href="#book" class="hero-btn">Book Appointment — Rs. 800</a>
+    </div>
+    <div class="hero-right">
+      <div class="hcard">
+        <div class="hcard-av">💊</div>
+        <h3>Dr. Rafia Iqbal</h3>
+        <p class="hcsub">PharmD — Clinical Pharmacist</p>
+        <div class="hcard-stats">
+          <div><span class="hs-n">500+</span><span class="hs-l">Patients</span></div>
+          <div><span class="hs-n">5+</span><span class="hs-l">Years</span></div>
+          <div><span class="hs-n">4.9★</span><span class="hs-l">Rating</span></div>
+        </div>
+        <div class="badge-avail">Available Now</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"><hr></div>
+
+<!-- ══ SERVICES ══ -->
+<section class="section" id="services">
+  <div class="sh rv">
+    <div class="tag">Services</div>
+    <h2>Pharmaceutical Care<br>Tailored to You</h2>
+    <p>Comprehensive, evidence-based pharmaceutical services delivered with expertise and a patient-first approach.</p>
+  </div>
+  <div class="svc-grid">
+    <div class="svc rv"><span class="svc-ico">💊</span><h3>Medication Management</h3><p>Complete review of all medications, dosage optimization, and drug interaction screening to ensure your safety.</p></div>
+    <div class="svc rv" style="transition-delay:.08s"><span class="svc-ico">🩺</span><h3>Clinical Consultation</h3><p>Expert guidance for chronic conditions — diabetes, hypertension, and cardiovascular disease management.</p></div>
+    <div class="svc rv" style="transition-delay:.16s"><span class="svc-ico">🧪</span><h3>Drug Counseling</h3><p>Step-by-step instructions on correct medication use for maximum benefit and minimal side effects.</p></div>
+    <div class="svc rv" style="transition-delay:.24s"><span class="svc-ico">🌿</span><h3>Herbal &amp; OTC Advice</h3><p>Safe, evidence-based recommendations on herbal medicines and over-the-counter products.</p></div>
+    <div class="svc rv" style="transition-delay:.32s"><span class="svc-ico">👶</span><h3>Pediatric Pharmacy</h3><p>Specialized dosing and safety advice for children, with clear guidance for parents and caregivers.</p></div>
+    <div class="svc rv" style="transition-delay:.40s"><span class="svc-ico">🤰</span><h3>Pregnancy &amp; Lactation</h3><p>Safe medication selection for pregnant and breastfeeding mothers — protecting both mother and child.</p></div>
+  </div>
+</section>
+
+<div class="divider"><hr></div>
+
+<!-- ══ ABOUT ══ -->
+<section class="about-bg" id="about">
+  <div class="about-inner">
+    <div class="about-left rv">
+      <div class="tag">About Dr. Rafia Iqbal</div>
+      <h2>Committed to Your Health &amp; Safety</h2>
+      <p>I am Dr. Rafia Iqbal — a certified clinical pharmacist with a Doctor of Pharmacy degree and over five years of hands-on experience in hospital and community pharmacy settings. My approach is always patient-first: understanding your needs, reviewing your medications thoroughly, and delivering clear, actionable advice.</p>
+      <div class="feat-list">
+        <div class="feat"><div class="feat-ico">🎓</div><div><h4>PharmD Qualified</h4><p>Doctorate in Pharmacy with full clinical rotations.</p></div></div>
+        <div class="feat"><div class="feat-ico">🏥</div><div><h4>5+ Years Clinical Experience</h4><p>Hospital &amp; community pharmacy settings.</p></div></div>
+        <div class="feat"><div class="feat-ico">🎥</div><div><h4>Secure Video Consultations</h4><p>Video call unlocks only after confirmed payment.</p></div></div>
+        <div class="feat"><div class="feat-ico">🔒</div><div><h4>Private &amp; Confidential</h4><p>All sessions and payment data are fully encrypted.</p></div></div>
+      </div>
+    </div>
+    <div class="stat-tiles rv" style="transition-delay:.2s">
+      <div class="stile"><div class="stile-ico">🏆</div><span class="stile-val">500+</span><span class="stile-lbl">Satisfied Patients</span></div>
+      <div class="stile"><div class="stile-ico">⭐</div><span class="stile-val">4.9</span><span class="stile-lbl">Patient Rating</span></div>
+      <div class="stile"><div class="stile-ico">💊</div><span class="stile-val">5+</span><span class="stile-lbl">Years Experience</span></div>
+      <div class="stile" style="background:rgba(184,145,42,.12);border-color:rgba(184,145,42,.25);"><div class="stile-ico">🎥</div><span class="stile-val">100%</span><span class="stile-lbl">Online Accessible</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ BOOK APPOINTMENT + PAYMENT ══ (ONE SECTION ONLY) -->
+<section class="book-bg" id="book">
+  <div class="book-inner">
+    <div class="sh rv" style="margin-bottom:2.5rem;">
+      <div class="tag">Step 1 of 2</div>
+      <h2>Book &amp; Pay</h2>
+      <p>Complete your appointment form and pay Rs. 800 securely. Your video consultation room unlocks immediately after payment.</p>
+    </div>
+
+    <div class="book-grid rv">
+      <!-- Left info -->
+      <div class="book-left">
+        <h3>Appointment<br>Details</h3>
+        <p>Your session includes a full medication review, drug counseling, and personalized pharmaceutical advice via secure video call.</p>
+        <div class="info-row"><div class="info-ico">⏱️</div><div><strong>Duration</strong><span>30 – 45 minutes</span></div></div>
+        <div class="info-row"><div class="info-ico">🎥</div><div><strong>Mode</strong><span>Video Call — unlocks after payment</span></div></div>
+        <div class="info-row"><div class="info-ico">🕐</div><div><strong>Working Hours</strong><span>Monday – Saturday, 9 AM – 6 PM</span></div></div>
+        <div class="info-row"><div class="info-ico">📱</div><div><strong>WhatsApp</strong><span>+92-345-8156794</span></div></div>
+        <div class="info-row"><div class="info-ico">🔒</div><div><strong>Payment</strong><span>Visa · Mastercard · EasyPaisa · JazzCash</span></div></div>
+        <div class="fee-tag">
+          <div><div class="fl">Consultation Fee</div><div class="fv">Rs. 800</div></div>
+          <div style="font-size:1.5rem">💰</div>
+        </div>
+      </div>
+
+      <!-- Right form -->
+      <div class="book-right">
+        <h4>Patient Information &amp; Payment</h4>
+        <div class="fg2">
+          <div class="fg"><label>Full Name *</label><input type="text" id="pName" placeholder="Your full name"></div>
+          <div class="fg"><label>Phone Number *</label><input type="tel" id="pPhone" placeholder="+92-300-0000000"></div>
+        </div>
+        <div class="fg2">
+          <div class="fg"><label>Email Address</label><input type="email" id="pEmail" placeholder="your@email.com"></div>
+          <div class="fg"><label>Age</label><input type="number" id="pAge" placeholder="Age" min="1" max="120"></div>
+        </div>
+        <div class="fg2">
+          <div class="fg"><label>Preferred Date *</label><input type="date" id="pDate"></div>
+          <div class="fg"><label>Preferred Time *</label>
+            <select id="pTime">
+              <option value="">Select time slot</option>
+              <option>09:00 AM</option><option>10:00 AM</option><option>11:00 AM</option>
+              <option>12:00 PM</option><option>02:00 PM</option><option>03:00 PM</option>
+              <option>04:00 PM</option><option>05:00 PM</option>
+            </select>
+          </div>
+        </div>
+        <div class="fg"><label>Chief Complaint / Query</label><textarea id="pNote" placeholder="Describe your concern or medication questions..."></textarea></div>
+
+        <span class="pay-label">Select Payment Method *</span>
+        <div class="pay-opts">
+          <div class="pay-opt on" data-m="card" onclick="selPay(this)"><span>💳</span>Visa / Mastercard</div>
+          <div class="pay-opt" data-m="easypaisa" onclick="selPay(this)"><span>📱</span>EasyPaisa</div>
+          <div class="pay-opt" data-m="jazzcash" onclick="selPay(this)"><span>💜</span>JazzCash</div>
+        </div>
+
+        <div id="cardPanel">
+          <div class="fg"><label>Card Details</label><div id="card-el"></div><div id="card-err"></div></div>
+        </div>
+        <div id="epPanel" style="display:none">
+          <div class="fg"><label>EasyPaisa Number</label><input type="tel" id="epNum" placeholder="03XX-XXXXXXX"></div>
+          <div class="pay-note">Send <strong>Rs. 800</strong> to <strong>0345-8156794</strong> via EasyPaisa, then enter your number and confirm.</div>
+        </div>
+        <div id="jcPanel" style="display:none">
+          <div class="fg"><label>JazzCash Number</label><input type="tel" id="jcNum" placeholder="03XX-XXXXXXX"></div>
+          <div class="pay-note">Send <strong>Rs. 800</strong> to <strong>0345-8156794</strong> via JazzCash, then enter your number and confirm.</div>
+        </div>
+
+        <button class="pay-btn" id="payBtn" onclick="handlePay()">
+          🔒 <span id="payTxt">Pay Rs. 800 &amp; Unlock Video Consultation</span>
+        </button>
+        <div class="trust">
+          <span>🔒 SSL Encrypted</span>
+          <span>💳 Visa &amp; Mastercard</span>
+          <span>📱 EasyPaisa · JazzCash</span>
+          <span>🎥 Video Unlocks on Payment</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ VIDEO CONSULTATION (locked → unlocked) ══ -->
+<section class="vc-bg" id="consultation">
+  <div class="vc-inner">
+    <div class="sh rv" style="margin-bottom:2.5rem;">
+      <div class="tag" style="background:rgba(184,145,42,.15);color:var(--gold);">Step 2 of 2</div>
+      <h2 style="color:#fff;">Video Consultation</h2>
+      <p style="color:rgba(255,255,255,.5);">Your live session with Dr. Rafia Iqbal — unlocks instantly after payment confirmation.</p>
+    </div>
+
+    <!-- LOCKED STATE -->
+    <div class="vc-locked" id="vcLocked">
+      <div class="vl-top rv">
+        <div class="vl-text">
+          <div class="tag" style="background:rgba(184,145,42,.15);color:var(--gold);">Currently Locked</div>
+          <h2>Secure Video<br>Consultation</h2>
+          <p>Complete your appointment booking and payment to unlock your private video consultation room with Dr. Rafia Iqbal. No app download required — everything runs in your browser.</p>
+          <div class="lock-badge">🔒 &nbsp; Unlocks after Rs. 800 payment above</div>
+        </div>
+        <div class="lock-card rv" style="transition-delay:.15s">
+          <div class="lock-icon">🔒</div>
+          <h4>Video Room Locked</h4>
+          <p>Complete payment to get instant access to your live consultation room.</p>
+          <div class="lock-steps">
+            <div class="lock-step"><div class="lock-step-n">1</div><span>Fill appointment form above</span></div>
+            <div class="lock-step"><div class="lock-step-n">2</div><span>Pay Rs. 800 securely</span></div>
+            <div class="lock-step"><div class="lock-step-n">3</div><span>Video room unlocks instantly</span></div>
+          </div>
+          <a href="#book" class="pay-btn" style="text-decoration:none;display:inline-flex;padding:.75rem 1.6rem;border-radius:4px;font-size:.88rem;font-weight:600;">↑ Book &amp; Pay Above</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- UNLOCKED STATE -->
+    <div class="vc-unlocked" id="vcUnlocked">
+      <div class="unlock-strip rv">
+        <div class="us-ico">🔓</div>
+        <div class="us-text">
+          <h4>Video Consultation Unlocked</h4>
+          <p>Payment confirmed — your live session with Dr. Rafia Iqbal is ready below.</p>
+        </div>
+        <div class="us-ref" id="usRef">REF: —</div>
+      </div>
+
+      <div class="vc-room-grid rv" style="transition-delay:.1s">
+        <!-- Main video -->
+        <div class="vcr-main-vid">
+          <div class="vcr-screen" id="vcScreen">
+            <div class="vcr-status" id="vcSt">WAITING</div>
+            <div class="vcr-av">👩‍⚕️</div>
+            <div class="vcr-dname">Dr. Rafia Iqbal</div>
+            <div class="vcr-pip">👤</div>
+            <!-- Start overlay -->
+            <div class="start-overlay" id="startOv">
+              <div class="so-av">👩‍⚕️</div>
+              <h4>Dr. Rafia Iqbal is waiting</h4>
+              <p>Your consultation room is ready</p>
+              <button class="start-btn" onclick="startCall()">🎥 Start Consultation</button>
+            </div>
+          </div>
+          <div class="vcr-bar">
+            <div class="vcr-btns">
+              <button class="vcr-btn grey" onclick="togBtn(this,'🎤','🔇')" title="Mute">🎤</button>
+              <button class="vcr-btn grey" onclick="togBtn(this,'📷','📵')" title="Camera">📷</button>
+              <button class="vcr-btn grey" title="Share Screen">🖥️</button>
+              <button class="vcr-btn red" onclick="endCall()" title="End Call">📞</button>
+            </div>
+            <div class="vcr-dur" id="vcTime">00:00</div>
+          </div>
+        </div>
+
+        <!-- Sidebar -->
+        <div class="vcr-side">
+          <div class="vcr-doc-info">
+            <div class="di-row">
+              <div class="di-av">👩‍⚕️</div>
+              <div>
+                <div class="di-name">Dr. Rafia Iqbal</div>
+                <div class="di-role">Clinical Pharmacist · PharmD</div>
+              </div>
+              <div class="di-online">Online</div>
+            </div>
+          </div>
+          <div class="vcr-chat-box">
+            <div class="chat-hd">Session Chat</div>
+            <div class="chat-msgs" id="chatMsgs">
+              <div class="cmsg"><div class="cw">Dr. Rafia Iqbal</div><div class="ct">Welcome! Please click Start Consultation when you are ready.</div></div>
+            </div>
+            <div class="chat-inp">
+              <input type="text" id="chatIn" placeholder="Type a message…" onkeydown="if(event.key==='Enter')sendMsg()">
+              <button onclick="sendMsg()">➤</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ══ FOOTER ══ -->
+<div class="footer-bg">
+  <div class="footer-inner">
+    <div class="f-brand">Dr. <strong>Rafia Iqbal</strong></div>
+    <div class="f-mid">PharmD — Clinical Pharmacist &nbsp;·&nbsp; WhatsApp: +92-345-8156794</div>
+    <div class="f-right">© 2024 All Rights Reserved</div>
+  </div>
+</div>
+
+<!-- SUCCESS MODAL -->
+<div class="modal-bg" id="modalBg">
+  <div class="modal">
+    <div class="modal-check">✓</div>
+    <h3>Payment Successful</h3>
+    <p>Your appointment is confirmed and payment has been received. Dr. Rafia Iqbal has been notified via WhatsApp.</p>
+    <div class="modal-ref" id="modalRef">Reference: —</div>
+    <div class="modal-unlock">
+      <div class="mu-ico">🎥</div>
+      <div class="mu-text">
+        <h4>Video Consultation Unlocked</h4>
+        <p>Your live consultation room is now active. Click below to go directly to your session.</p>
+      </div>
+    </div>
+    <a class="wa-btn" id="waLink" href="#" target="_blank">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      Notify Dr. Rafia on WhatsApp
+    </a>
+    <button class="modal-close-btn" onclick="closeModal()">Go to Video Consultation →</button>
+  </div>
+</div>
+
+<script>
+/* LOADER */
+window.addEventListener('load',()=>setTimeout(()=>document.getElementById('ld').classList.add('out'),1500));
+
+/* SCROLL REVEAL */
+const ro=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('in');ro.unobserve(x.target);}});},{threshold:.1});
+document.querySelectorAll('.rv').forEach(el=>ro.observe(el));
+
+/* DATE MIN */
+document.getElementById('pDate').min=new Date().toISOString().split('T')[0];
+
+/* PAYMENT METHOD */
+let method='card';
+function selPay(el){
+  document.querySelectorAll('.pay-opt').forEach(o=>o.classList.remove('on'));
+  el.classList.add('on');method=el.dataset.m;
+  document.getElementById('cardPanel').style.display=method==='card'?'block':'none';
+  document.getElementById('epPanel').style.display=method==='easypaisa'?'block':'none';
+  document.getElementById('jcPanel').style.display=method==='jazzcash'?'block':'none';
+  const txt=method==='card'?'Pay Rs. 800 & Unlock Video Consultation':
+    method==='easypaisa'?'Confirm EasyPaisa & Unlock Video Consultation':
+    'Confirm JazzCash & Unlock Video Consultation';
+  document.getElementById('payTxt').textContent=txt;
+}
+
+/* STRIPE */
+let stripe,cardEl,cardOk=false;
+try{
+  stripe=Stripe('pk_test_51OxampleReplaceWithYourRealStripePublishableKey');
+  const els=stripe.elements();
+  cardEl=els.create('card',{style:{base:{fontFamily:'Inter,sans-serif',fontSize:'15px',color:'#0d1f1a','::placeholder':{color:'#6e8880'}}}});
+  cardEl.mount('#card-el');
+  cardEl.on('change',e=>{document.getElementById('card-err').textContent=e.error?e.error.message:'';cardOk=!e.error&&e.complete;});
+}catch(e){
+  document.getElementById('cardPanel').innerHTML='<div style="background:#fef9ec;border:1px solid #e8d070;border-radius:4px;padding:.9rem;font-size:.82rem;color:#7a5a00;line-height:1.65;">⚠️ <strong>To activate Visa/Mastercard:</strong> Replace the test key in the code with your real Stripe Publishable Key from stripe.com. EasyPaisa &amp; JazzCash work immediately without any setup.</div>';
+}
+
+/* VALIDATE */
+function validate(){
+  const v=(id)=>document.getElementById(id).value.trim();
+  if(!v('pName'))return alert('Please enter your full name.'),false;
+  if(!v('pPhone'))return alert('Please enter your phone number.'),false;
+  if(!v('pDate'))return alert('Please select a preferred date.'),false;
+  if(!document.getElementById('pTime').value)return alert('Please select a time slot.'),false;
+  return true;
+}
+
+/* PAYMENT */
+async function handlePay(){
+  if(!validate())return;
+  const btn=document.getElementById('payBtn');
+  btn.disabled=true;document.getElementById('payTxt').textContent='Processing…';
+  if(method==='card'){
+    if(!stripe){setTimeout(()=>complete('CARD-DEMO'),1200);return;}
+    if(!cardOk){btn.disabled=false;selPay(document.querySelector('.pay-opt.on'));document.getElementById('card-err').textContent='Please complete your card details.';return;}
+    setTimeout(()=>complete('CARD-'+Math.floor(1e5+Math.random()*9e5)),1500);
+  } else if(method==='easypaisa'){
+    const n=document.getElementById('epNum').value.trim();
+    if(!n){alert('Please enter your EasyPaisa number.');btn.disabled=false;return;}
+    setTimeout(()=>complete('EP-'+Math.floor(1e5+Math.random()*9e5)),1200);
+  } else {
+    const n=document.getElementById('jcNum').value.trim();
+    if(!n){alert('Please enter your JazzCash number.');btn.disabled=false;return;}
+    setTimeout(()=>complete('JC-'+Math.floor(1e5+Math.random()*9e5)),1200);
+  }
+}
+
+/* COMPLETE PAYMENT → UNLOCK VIDEO */
+function complete(txn){
+  const name=document.getElementById('pName').value.trim();
+  const phone=document.getElementById('pPhone').value.trim();
+  const date=document.getElementById('pDate').value;
+  const time=document.getElementById('pTime').value;
+  const note=document.getElementById('pNote').value.trim();
+  const ref='APT-'+Date.now().toString().slice(-6);
+
+  document.getElementById('modalRef').textContent='Reference: '+ref+' · Txn: '+txn;
+
+  const msg=encodeURIComponent(
+    '🔔 NEW APPOINTMENT BOOKED\n\n'+
+    '👤 Patient: '+name+'\n📱 Phone: '+phone+'\n'+
+    '📅 Date: '+date+'\n🕐 Time: '+time+'\n'+
+    '💬 Complaint: '+(note||'Not specified')+'\n'+
+    '💰 Payment: Rs. 800 ('+method.toUpperCase()+') ✅\n'+
+    '🔖 Ref: '+ref+' · Txn: '+txn+'\n\n'+
+    'Video consultation is now unlocked for this patient.'
+  );
+  document.getElementById('waLink').href='https://wa.me/923458156794?text='+msg;
+
+  // Unlock video
+  document.getElementById('vcLocked').style.display='none';
+  const u=document.getElementById('vcUnlocked');
+  u.classList.add('on');
+  document.getElementById('usRef').textContent='REF: '+ref;
+  ro.observe(u.querySelector('.rv'));
+
+  // Show modal
+  document.getElementById('modalBg').classList.add('on');
+
+  // Reset button
+  document.getElementById('payBtn').disabled=false;
+  document.getElementById('payTxt').textContent='Pay Rs. 800 & Unlock Video Consultation';
+}
+
+/* CLOSE MODAL → SCROLL TO VIDEO */
+function closeModal(){
+  document.getElementById('modalBg').classList.remove('on');
+  document.getElementById('consultation').scrollIntoView({behavior:'smooth'});
+  ['pName','pPhone','pEmail','pAge','pDate','pNote'].forEach(id=>{const e=document.getElementById(id);if(e)e.value='';});
+  document.getElementById('pTime').selectedIndex=0;
+}
+
+/* VIDEO CALL */
+let timer=null,secs=0,live=false;
+
+function startCall(){
+  document.getElementById('startOv').style.display='none';
+  document.getElementById('vcSt').textContent='● LIVE';
+  document.getElementById('vcSt').style.color='#4ade80';
+  live=true;secs=0;
+  timer=setInterval(()=>{secs++;const m=String(Math.floor(secs/60)).padStart(2,'0'),s=String(secs%60).padStart(2,'0');document.getElementById('vcTime').textContent=m+':'+s;},1000);
+  drMsg('Assalam-u-Alaikum! Thank you for joining. How can I help you today?');
+}
+
+function endCall(){
+  clearInterval(timer);live=false;
+  document.getElementById('vcTime').textContent='00:00';
+  document.getElementById('vcSt').textContent='ENDED';
+  document.getElementById('vcSt').style.color='rgba(255,255,255,.35)';
+  drMsg('Thank you for your consultation. Please follow the advice given. Take care! 🌟');
+}
+
+function togBtn(b,a,c){b.textContent=b.textContent===a?c:a;}
+
+function sendMsg(){
+  const inp=document.getElementById('chatIn'),txt=inp.value.trim();if(!txt)return;
+  const box=document.getElementById('chatMsgs');
+  const d=document.createElement('div');d.className='cmsg mine';
+  d.innerHTML='<div class="cw">You</div><div class="ct">'+txt+'</div>';
+  box.appendChild(d);box.scrollTop=box.scrollHeight;inp.value='';
+  if(live) setTimeout(()=>drMsg(['I understand. Let me review your medications.','Please take this after food to avoid side effects.','That is a common concern — I will explain step by step.','Thank you for sharing. Noted.','I will prepare a recommendation for you.'][Math.floor(Math.random()*5)]),1200);
+}
+
+function drMsg(t){
+  const box=document.getElementById('chatMsgs');
+  const d=document.createElement('div');d.className='cmsg';
+  d.innerHTML='<div class="cw">Dr. Rafia Iqbal</div><div class="ct">'+t+'</div>';
+  box.appendChild(d);box.scrollTop=box.scrollHeight;
+}
+
+/* BG CLICK CLOSE */
+document.getElementById('modalBg').addEventListener('click',e=>{if(e.target===e.currentTarget)closeModal();});
+</script>
+</body>
+</html>
